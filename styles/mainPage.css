@@ -1,0 +1,54 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background-color: burlywood;
+}
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 7rem;
+  line-height: 10rem;
+  letter-spacing: 1px;
+  color: cadetblue;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  border: 4px dotted cadetblue;
+  width: 30%;
+  height: auto;
+  padding: 40px;
+  gap: 10px;
+}
+
+#form label {
+  font-size: 22px;
+  line-height: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+#form select {
+  font-size: 15px;
+  line-height: 15px;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+#form button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 50px;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  cursor: pointer;
+  transition: 0.7s;
+}
+#form button:hover {
+  background-color: cadetblue;
+  color: white;
+}
