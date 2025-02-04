@@ -4,6 +4,7 @@ body {
   align-items: center;
   padding: 50px;
   background-color: burlywood;
+  overflow: hidden;
 }
 h1 {
   font-family: "Courier New", Courier, monospace;
@@ -22,6 +23,15 @@ h1 {
   padding: 40px;
   gap: 10px;
   box-shadow: 5px 5px 30px 7px cadetblue;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  transition: transform 1s ease-in-out, opacity 0.7s ease-in-out;
+}
+#form-quiz.hide {
+  transform: translate(200%, -50%);
+  opacity: 0;
 }
 
 #form-quiz label {
@@ -50,7 +60,31 @@ input {
   cursor: pointer;
   transition: 0.7s;
 }
-#form-quiz button:hover {
+#form-quiz button:hover,
+#start-quiz:hover {
   background-color: cadetblue;
   color: white;
+}
+
+#start-quiz {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  cursor: pointer;
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+  opacity: 0;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(50vh);
+  visibility: hidden;
+}
+#start-quiz.show {
+  transform: translateX(-50%) translateY(40vh);
+  visibility: visible;
+  /* transition: transform 0.7s ease-in-out, opacity 0.7s; */
+  opacity: 1;
 }

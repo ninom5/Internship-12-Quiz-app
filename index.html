@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Quiz app</title>
   </head>
   <body>
@@ -16,14 +16,14 @@
       <label for="category-select">Choose category</label>
       <select name="category-select" id="select-category">
         <option value="">Any category</option>
-        <option value="26">Animals</option>
-        <option value="24">Arts</option>
-        <option value="25">Celebrities</option>
-        <option value="21">Geography</option>
-        <option value="22">History</option>
-        <option value="19">Mythology</option>
-        <option value="23">Politics</option>
-        <option value="20">Sports</option>
+        <option value="27">Animals</option>
+        <option value="25">Arts</option>
+        <option value="26">Celebrities</option>
+        <option value="22">Geography</option>
+        <option value="23">History</option>
+        <option value="20">Mythology</option>
+        <option value="24">Politics</option>
+        <option value="21">Sports</option>
       </select>
 
       <label for="difficulty-select">Choose difficulty</label>
@@ -41,6 +41,10 @@
 
       <button type="submit">Start quiz</button>
     </form>
-    <script src="../scripts/formData.js" type="module"></script>
+
+    <button id="start-quiz">Start quiz</button>
+
+    <script src="./scripts/formData.js" type="module"></script>
+    <!-- <script type="module" src="./scripts/quizQuestions.js"></script> -->
   </body>
 </html>

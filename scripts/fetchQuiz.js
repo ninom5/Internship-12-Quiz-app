@@ -3,6 +3,7 @@ async function fetchQuizData(category, difficulty, type) {
 
   if (category) fetchUrl += `&category=${category}`;
 
+  console.log(fetchUrl);
   try {
     const apiResponse = await fetch(fetchUrl);
     if (!apiResponse.ok) throw new Error("Error while getting quiz data");
