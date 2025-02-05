@@ -2,6 +2,7 @@ import { fetchQuizData } from "./fetchQuiz.js";
 import { showQuizQuestions } from "./showQuestions.js";
 
 const userForm = document.getElementById("form-quiz");
+let questions;
 
 userForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -11,13 +12,13 @@ userForm.addEventListener("submit", async (event) => {
   const difficulty = document.getElementById("select-difficulty").value;
   const type = document.getElementById("select-type").value;
 
-  localStorage.setItem("player name: ", playerName);
+  localStorage.setItem("player name", playerName);
 
   let query = `?difficulty=${difficulty}&type=${type}`;
 
   if (category) query += `&category=${category}`;
 
-  fetchQuizData(category, difficulty, type);
+  questions = await fetchQuizData(category, difficulty, type);
 
   hideForm();
 });
@@ -30,6 +31,7 @@ function hideForm() {
 
   startButton.addEventListener("click", () => {
     startButton.classList.remove("show");
-    showQuizQuestions();
+
+    showQuizQuestions(questions);
   });
 }

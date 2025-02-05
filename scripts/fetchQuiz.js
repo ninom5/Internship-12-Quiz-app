@@ -10,6 +10,8 @@ async function fetchQuizData(category, difficulty, type) {
 
     const data = await apiResponse.json();
     console.log(data);
+
+    return data;
   } catch (error) {
     console.error("Error while fetching data", error);
   }
