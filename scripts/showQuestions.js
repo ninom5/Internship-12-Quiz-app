@@ -1,13 +1,17 @@
 const questionCard = document.querySelector(".questions-card");
 const cardHeading = document.querySelector(".questions-card h3");
 const answerButtons = document.getElementsByClassName("answer-btn");
+const nextQuestion = document.getElementById("next-question-btn");
 
 let currentQuestion = 0;
+let correctAnswersCounter = 0;
+
 let selectedAnswer = null;
 let activeTimer = null;
 
 function showQuizQuestions(questions) {
   questionCard.style.display = "flex";
+  nextQuestion.disabled = true;
 
   const responseObject = questions.results[currentQuestion];
   const questionText = responseObject.question;
@@ -22,6 +26,7 @@ function showQuizQuestions(questions) {
   Array.from(answerButtons).forEach((btn) => (btn.innerHTML = ""));
 
   answers.forEach((answer, index) => {
+    answerButtons[index].disabled = false;
     answerButtons[index].innerHTML = answer;
 
     answerButtons[index].addEventListener("click", () => {
@@ -34,14 +39,13 @@ function showQuizQuestions(questions) {
       if (activeTimer) clearTimeout(activeTimer);
 
       selectedAnswer = answer;
+
       activeTimer = setTimeout(() => {
         if (confirm("Do you want to lock in your answer?"))
           checkAnswer(answer, correctAnswer, questions, index, answers);
         else {
           alert("choose answer again");
-          Array.from(answerButtons).forEach(
-            (btn) => (btn.style.border = "none")
-          );
+          resetSelectedAnswer(index);
         }
       }, 2000);
     });
@@ -49,28 +53,45 @@ function showQuizQuestions(questions) {
 }
 
 function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
+  nextQuestion.disabled = false;
+  for (let i = 0; i < answerButtons.length; i++)
+    answerButtons[i].disabled = true;
+
   let correctAnswerIndex = answers.indexOf(correctAnswer);
 
-  console.log(userAnswer);
-  console.log(correctAnswer);
-
   if (userAnswer !== correctAnswer) {
-    answerButtons[index].classList.add("wrong-answer");
+    markAnswerAsWrong(index);
+    markAnswerAsCorrect(correctAnswerIndex);
+  } else {
+    markAnswerAsCorrect(correctAnswerIndex);
+    correctAnswersCounter++;
   }
-
-  answerButtons[correctAnswerIndex].classList.add("correct-answer");
 
   console.log();
   if (++currentQuestion < questions.results.length) {
-    setTimeout(() => {
-      answerButtons[index].classList.remove("wrong-answer");
-      answerButtons[correctAnswerIndex].classList.remove("correct-answer");
-      answerButtons[index].classList.remove("selected-answer");
+    nextQuestion.onclick = function () {
+      resetAnswerButtons(index, correctAnswerIndex);
       showQuizQuestions(questions);
-    }, 5000);
+    };
   } else {
-    alert("gotoovovovoov");
+    alert(correctAnswersCounter);
   }
+}
+
+function markAnswerAsWrong(index) {
+  answerButtons[index].classList.add("wrong-answer");
+}
+
+function markAnswerAsCorrect(index) {
+  answerButtons[index].classList.add("correct-answer");
+}
+function resetAnswerButtons(index, correctAnswerIndex) {
+  answerButtons[index].classList.remove("wrong-answer");
+  answerButtons[correctAnswerIndex].classList.remove("correct-answer");
+  answerButtons[index].classList.remove("selected-answer");
+}
+function resetSelectedAnswer(index) {
+  answerButtons[index].classList.remove("selected-answer");
 }
 
 export { showQuizQuestions };

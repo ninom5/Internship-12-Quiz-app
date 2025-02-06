@@ -107,6 +107,7 @@ input {
   font-size: 30px;
   line-height: 30px;
 }
+
 .answer-btn {
   height: 60px;
   width: 90%;
@@ -114,6 +115,24 @@ input {
   font-size: 24px;
   border: none;
   border-radius: 8px;
+  transition: 0.7s;
+}
+.answer-btn:hover {
+  background-color: cadetblue;
+  color: white;
+}
+#next-question-btn {
+  height: 40px;
+  width: 30%;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.7s;
+}
+#next-question-btn:hover {
+  background-color: black;
+  color: white;
 }
 
 .selected-answer {
