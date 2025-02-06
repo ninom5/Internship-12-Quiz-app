@@ -1,3 +1,5 @@
+import { a } from "./quizStats.js";
+
 const questionCard = document.querySelector(".questions-card");
 const cardHeading = document.querySelector(".questions-card h3");
 const answerButtons = document.getElementsByClassName("answer-btn");
@@ -5,6 +7,8 @@ const nextQuestion = document.getElementById("next-question-btn");
 
 let currentQuestion = 0;
 let correctAnswersCounter = 0;
+
+let numberOfAnswers = 0;
 
 let selectedAnswer = null;
 let activeTimer = null;
@@ -19,6 +23,16 @@ function showQuizQuestions(questions) {
   const correctAnswer = responseObject.correct_answer;
 
   cardHeading.innerHTML = questionText;
+
+  numberOfAnswers = responseObject.type === "boolean" ? 2 : 4;
+
+  questionCard.querySelectorAll(".answer-btn").forEach((btn) => btn.remove());
+
+  for (let i = 0; i < numberOfAnswers; i++) {
+    let button = document.createElement("button");
+    button.classList.add("answer-btn");
+    questionCard.appendChild(button);
+  }
 
   let answers = [...incorrectAnswers, correctAnswer];
   answers.sort();
@@ -74,7 +88,10 @@ function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
       showQuizQuestions(questions);
     };
   } else {
-    alert(correctAnswersCounter);
+    nextQuestion.onclick = () => {
+      questionCard.style.display = "none";
+      a(correctAnswersCounter);
+    };
   }
 }
 

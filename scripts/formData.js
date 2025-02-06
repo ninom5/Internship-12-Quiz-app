@@ -20,6 +20,13 @@ userForm.addEventListener("submit", async (event) => {
 
   questions = await fetchQuizData(category, difficulty, type);
 
+  if (questions.results.length < 5) {
+    alert(
+      "There is no enough quesstions for selected parametrs. \nChange parametrs and try again"
+    );
+    return;
+  }
+
   hideForm();
 });
 

@@ -121,7 +121,8 @@ input {
   background-color: cadetblue;
   color: white;
 }
-#next-question-btn {
+#next-question-btn,
+.starting-page-btn {
   height: 40px;
   width: 30%;
   cursor: pointer;
@@ -129,10 +130,29 @@ input {
   border: none;
   border-radius: 5px;
   transition: 0.7s;
+  order: 5;
 }
 #next-question-btn:hover {
   background-color: black;
   color: white;
+}
+
+#quiz-score-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.score-heading {
+  font-size: 40px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.score-description {
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
 }
 
 .selected-answer {
