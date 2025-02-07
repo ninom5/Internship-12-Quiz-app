@@ -1,10 +1,20 @@
 body {
+  background-color: burlywood;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-x: hidden;
+}
+.quiz-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
-  background-color: burlywood;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 h1 {
   font-family: "Courier New", Courier, monospace;
@@ -90,7 +100,7 @@ input {
 }
 
 .questions-card {
-  border: 5px solid black;
+  border: 5px solid cadetblue;
   border-radius: 25px;
   height: auto;
   width: 30%;
@@ -106,6 +116,7 @@ input {
 .questions-card h3 {
   font-size: 30px;
   line-height: 30px;
+  color: cadetblue;
 }
 
 .answer-btn {
@@ -165,4 +176,26 @@ input {
 
 .correct-answer {
   background-color: green;
+}
+
+#list-of-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+#list-of-scores li {
+  display: flex;
+  flex-direction: row;
+}
+.previous-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  font-size: 30px;
+  color: cadetblue;
 }

@@ -90,7 +90,11 @@ function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
   } else {
     nextQuestion.onclick = () => {
       questionCard.style.display = "none";
-      a(correctAnswersCounter);
+      a(
+        correctAnswersCounter,
+        questions.results[0].difficulty,
+        questions.results[0].category
+      );
     };
   }
 }

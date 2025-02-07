@@ -1,3 +1,5 @@
+import { appendNewScore } from "./historyScore.js";
+
 const scoreContainer = document.getElementById("quiz-score-container");
 const heading = document.createElement("h2");
 const description = document.createElement("p");
@@ -7,7 +9,7 @@ heading.classList.add("score-heading");
 description.classList.add("score-description");
 resetButton.classList.add("starting-page-btn");
 
-function a(correctAnswersCounter) {
+function a(correctAnswersCounter, difficulty, category) {
   const descriptionContent = {
     0: "It looks like this quiz was quite challenging. Don't be discouraged—every mistake is an opportunity to learn.",
     1: "You got one correct answer. Keep practicing, and you'll see improvement in no time.",
@@ -26,6 +28,7 @@ function a(correctAnswersCounter) {
   scoreContainer.appendChild(resetButton);
 
   resetButton.onclick = () => {
+    appendNewScore(correctAnswersCounter, difficulty, category);
     window.location.href = "index.html";
   };
 }

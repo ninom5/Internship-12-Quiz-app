@@ -7,50 +7,56 @@
     <title>Quiz app</title>
   </head>
   <body>
-    <h1>QUIZ APP</h1>
+    <section class="quiz-container">
+      <h1>QUIZ APP</h1>
 
-    <form action="" id="form-quiz">
-      <label for="plaxer-name">Enter your name</label>
-      <input type="text" id="player-name" required />
+      <form action="" id="form-quiz">
+        <label for="plaxer-name">Enter your name</label>
+        <input type="text" id="player-name" required />
 
-      <label for="category-select">Choose category</label>
-      <select name="category-select" id="select-category">
-        <option value="">Any category</option>
-        <option value="27">Animals</option>
-        <option value="25">Arts</option>
-        <option value="26">Celebrities</option>
-        <option value="22">Geography</option>
-        <option value="23">History</option>
-        <option value="20">Mythology</option>
-        <option value="24">Politics</option>
-        <option value="21">Sports</option>
-      </select>
+        <label for="category-select">Choose category</label>
+        <select name="category-select" id="select-category">
+          <option value="">Any category</option>
+          <option value="27">Animals</option>
+          <option value="25">Arts</option>
+          <option value="26">Celebrities</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="20">Mythology</option>
+          <option value="24">Politics</option>
+          <option value="21">Sports</option>
+        </select>
 
-      <label for="difficulty-select">Choose difficulty</label>
-      <select name="difficulty-select" id="select-difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
+        <label for="difficulty-select">Choose difficulty</label>
+        <select name="difficulty-select" id="select-difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
 
-      <label for="type-select">Choose type of quiz</label>
-      <select name="type-select" id="select-type">
-        <option value="multiple">Multiple option</option>
-        <option value="boolean">True / False</option>
-      </select>
+        <label for="type-select">Choose type of quiz</label>
+        <select name="type-select" id="select-type">
+          <option value="multiple">Multiple option</option>
+          <option value="boolean">True / False</option>
+        </select>
 
-      <button type="submit">Start quiz</button>
-    </form>
+        <button type="submit">Start quiz</button>
+      </form>
 
-    <button id="start-quiz">Start quiz</button>
+      <button id="start-quiz">Start quiz</button>
 
-    <div class="questions-card">
-      <h3></h3>
-      <button id="next-question-btn">Next question</button>
+      <div class="questions-card">
+        <h3></h3>
+        <button id="next-question-btn">Next question</button>
+      </div>
+
+      <div id="quiz-score-container"></div>
+    </section>
+
+    <div class="previous-scores">
+      <h3>Previous scores:</h3>
+      <li id="list-of-scores"></li>
     </div>
-
-    <div id="quiz-score-container"></div>
-
     <script src="./scripts/formData.js" type="module"></script>
     <!-- <script type="module" src="./scripts/quizQuestions.js"></script> -->
   </body>
