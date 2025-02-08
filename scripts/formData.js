@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         players.push({ playerName: key, ...parsedValue });
       }
     } catch (error) {
-      console.log(`Skipping invalid JSON for key ${key}`);
+      console.log("Error while parsing data: ", error);
     }
   }
 
@@ -28,9 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoreItem = document.createElement("li");
     const score = document.createElement("p");
 
+    const dateObj = new Date(player.dateTime);
+    const formattedDate = dateObj.toLocaleDateString();
+    const formattedTime = dateObj.toLocaleTimeString();
+
     score.innerHTML = `<i>Player name:</i> ${player.playerName},&nbsp; <i>number of correct answers: 
     </i> ${player.numberOfCorrectAnswers} / 5,&nbsp; <i>difficulty: </i>${player.difficulty},&nbsp; <i>category: 
-    </i>${player.category},&nbsp; <i>date: </i>${player.date},&nbsp; <i>time: </i>${player.time}`;
+    </i>${player.category},&nbsp; <i>date: </i>${formattedDate},&nbsp; <i>time: </i>${formattedTime}`;
 
     scoreItem.appendChild(score);
     listOfScores.appendChild(scoreItem);
@@ -50,6 +54,18 @@ userForm.addEventListener("submit", async (event) => {
   const category = document.getElementById("select-category").value;
   const difficulty = document.getElementById("select-difficulty").value;
   const type = document.getElementById("select-type").value;
+
+  if (playerName.trim() === "") {
+    alert("Please enter your name");
+    return;
+  }
+
+  const nameContainsNumbers = /\d/.test(playerName);
+
+  if (nameContainsNumbers) {
+    alert("Enter valid name without numbers");
+    return;
+  }
 
   localStorage.setItem("player name", playerName);
 

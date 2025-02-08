@@ -1,17 +1,13 @@
 function appendNewScore(numberOfCorrectAnswers, difficulty, category) {
-  
   const playerName = localStorage.getItem("player name");
   const quizData = {
     numberOfCorrectAnswers: numberOfCorrectAnswers,
     difficulty: difficulty,
     category: category,
-    date: new Date().toLocaleDateString(),
-    time: new Date().toLocaleTimeString()
+    dateTime: new Date(),
   };
 
-  localStorage.setItem(
-    playerName, JSON.stringify(quizData)
-  );
+  localStorage.setItem(playerName, JSON.stringify(quizData));
 }
 
 export { appendNewScore };

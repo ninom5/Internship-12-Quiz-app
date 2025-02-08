@@ -188,6 +188,10 @@ input {
   font-size: 20px;
 }
 
+.timer-container {
+  display: none;
+}
+
 @media (min-width: 768px) and (max-width: 1600px) {
   .quiz-container h1 {
     font-size: 5rem;
@@ -224,6 +228,9 @@ input {
   @media (min-width: 1400px) {
     #form-quiz {
       width: 30%;
+    }
+    .questions-card {
+      width: 35%;
     }
   }
 }

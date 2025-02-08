@@ -12,9 +12,11 @@ let numberOfAnswers = 0;
 let selectedAnswer = null;
 let activeTimer = null;
 let countDownTimer = null;
+let timeIsUp = false;
 
 function showQuizQuestions(questions) {
   questionCard.style.display = "flex";
+  document.querySelector(".timer-container").style.display = "block";
   nextQuestion.disabled = true;
 
   const responseObject = questions.results[currentQuestion];
@@ -105,8 +107,6 @@ function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
     };
   }
 }
-
-let timeIsUp = false;
 
 function startTimer(correctAnswerIndex, questions) {
   let time = 20;
