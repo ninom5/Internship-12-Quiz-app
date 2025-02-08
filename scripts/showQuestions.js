@@ -1,4 +1,4 @@
-import { a } from "./quizStats.js";
+import { showMessage } from "./quizStats.js";
 
 const questionCard = document.querySelector(".questions-card");
 const cardHeading = document.querySelector(".questions-card h3");
@@ -7,11 +7,11 @@ const nextQuestion = document.getElementById("next-question-btn");
 
 let currentQuestion = 0;
 let correctAnswersCounter = 0;
-
 let numberOfAnswers = 0;
 
 let selectedAnswer = null;
 let activeTimer = null;
+let countDownTimer = null;
 
 function showQuizQuestions(questions) {
   questionCard.style.display = "flex";
@@ -36,6 +36,8 @@ function showQuizQuestions(questions) {
 
   let answers = [...incorrectAnswers, correctAnswer];
   answers.sort();
+
+  startTimer(answers.indexOf(correctAnswer), questions);
 
   Array.from(answerButtons).forEach((btn) => (btn.innerHTML = ""));
 
@@ -67,7 +69,10 @@ function showQuizQuestions(questions) {
 }
 
 function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
+  clearInterval(countDownTimer);
+
   nextQuestion.disabled = false;
+
   for (let i = 0; i < answerButtons.length; i++)
     answerButtons[i].disabled = true;
 
@@ -90,13 +95,64 @@ function checkAnswer(userAnswer, correctAnswer, questions, index, answers) {
   } else {
     nextQuestion.onclick = () => {
       questionCard.style.display = "none";
-      a(
+      showMessage(
         correctAnswersCounter,
         questions.results[0].difficulty,
-        questions.results[0].category
+        questions.results[0].category === questions.results[1].category
+          ? questions.results[0].category
+          : "Any category"
       );
     };
   }
+}
+
+let timeIsUp = false;
+
+function startTimer(correctAnswerIndex, questions) {
+  let time = 20;
+  timeIsUp = false;
+
+  clearInterval(countDownTimer);
+
+  countDownTimer = setInterval(() => {
+    time--;
+    document.getElementById("timer").innerHTML = time + " seconds";
+
+    if (time <= 0) {
+      clearInterval(countDownTimer);
+      document.getElementById("timer").innerHTML = "Time's up!";
+      timeIsUp = true;
+      disableAnswerButtons();
+      answerButtons[correctAnswerIndex].style.backgroundColor = "green";
+      nextQuestion.disabled = false;
+
+      if (++currentQuestion < 5) {
+        nextQuestion.onclick = function () {
+          showQuizQuestions(questions);
+        };
+      } else {
+        nextQuestion.onclick = () => {
+          questionCard.style.display = "none";
+          showMessage(
+            correctAnswersCounter,
+            questions.results[0].difficulty,
+            questions.results[0].category === questions.results[1].category
+              ? questions.results[0].category
+              : "Any category"
+          );
+        };
+      }
+    }
+  }, 1000);
+
+  return timeIsUp;
+}
+
+function disableAnswerButtons() {
+  const answerButtons = document.querySelectorAll(".answer-btn");
+  answerButtons.forEach((btn) => {
+    btn.disabled = true;
+  });
 }
 
 function markAnswerAsWrong(index) {

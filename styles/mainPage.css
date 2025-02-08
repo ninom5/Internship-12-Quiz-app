@@ -7,6 +7,7 @@ body {
   gap: 20px;
   overflow-x: hidden;
 }
+
 .quiz-container {
   display: flex;
   flex-direction: column;
@@ -39,11 +40,6 @@ body {
   transform: translate(-50%, -60%);
   transition: transform 1s ease-in-out, opacity 0.7s ease-in-out;
 }
-#form-quiz.hide {
-  transform: translate(200%, -50%);
-  opacity: 0;
-}
-
 #form-quiz label {
   font-size: 22px;
   line-height: 30px;
@@ -92,12 +88,6 @@ input {
   transform: translateX(-50%) translateY(50vh);
   visibility: hidden;
 }
-#start-quiz.show {
-  transform: translateX(-50%) translateY(40vh);
-  visibility: visible;
-  /* transition: transform 0.7s ease-in-out, opacity 0.7s; */
-  opacity: 1;
-}
 
 .questions-card {
   border: 5px solid cadetblue;
@@ -112,7 +102,6 @@ input {
   margin: 30px;
   display: none;
 }
-
 .questions-card h3 {
   font-size: 30px;
   line-height: 30px;
@@ -132,6 +121,7 @@ input {
   background-color: cadetblue;
   color: white;
 }
+
 #next-question-btn,
 .starting-page-btn {
   height: 40px;
@@ -154,6 +144,7 @@ input {
   gap: 30px;
   align-items: center;
 }
+
 .score-heading {
   font-size: 40px;
   letter-spacing: 2px;
@@ -164,18 +155,6 @@ input {
   font-size: 20px;
   font-style: italic;
   text-align: center;
-}
-
-.selected-answer {
-  border: 2px solid black;
-}
-
-.wrong-answer {
-  background-color: red;
-}
-
-.correct-answer {
-  background-color: green;
 }
 
 #list-of-scores {
@@ -195,6 +174,7 @@ input {
   padding: 10px;
   width: 90%;
 }
+
 .previous-scores {
   display: flex;
   flex-direction: column;
@@ -203,13 +183,9 @@ input {
   font-size: 30px;
   color: cadetblue;
 }
-.previous-scores p{
+.previous-scores p {
   color: black;
   font-size: 20px;
-}
-
-.no-previous-scores{
-  color: black;
 }
 
 @media (min-width: 768px) and (max-width: 1600px) {
@@ -226,7 +202,7 @@ input {
     transform: (-50%, -50%);
     margin-top: 30px;
   }
-  #form-quiz button{
+  #form-quiz button {
     padding: 5px;
     margin-top: 20px;
   }
@@ -242,7 +218,12 @@ input {
     width: 20%;
   }
   #form-quiz select,
-input {
-  height: 30px;
-}
+  input {
+    height: 30px;
+  }
+  @media (min-width: 1400px) {
+    #form-quiz {
+      width: 30%;
+    }
+  }
 }

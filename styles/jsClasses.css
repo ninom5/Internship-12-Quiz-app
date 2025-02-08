@@ -1,0 +1,25 @@
+#form-quiz.hide {
+  transform: translate(200%, -50%);
+  opacity: 0;
+}
+#start-quiz.show {
+  transform: translateX(-50%) translateY(40vh);
+  visibility: visible;
+  opacity: 1;
+}
+
+.selected-answer {
+  border: 2px solid black;
+}
+
+.wrong-answer {
+  background-color: red;
+}
+
+.correct-answer {
+  background-color: green;
+}
+
+.no-previous-scores {
+  color: black;
+}

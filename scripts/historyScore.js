@@ -1,16 +1,12 @@
 function appendNewScore(numberOfCorrectAnswers, difficulty, category) {
-  // console.log(
-  //   localStorage.getItem("player name"),
-  //   numberOfCorrectAnswers,
-  //   difficulty,
-  //   category
-  // );
   
   const playerName = localStorage.getItem("player name");
   const quizData = {
     numberOfCorrectAnswers: numberOfCorrectAnswers,
     difficulty: difficulty,
-    category: category
+    category: category,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString()
   };
 
   localStorage.setItem(

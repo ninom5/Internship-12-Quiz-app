@@ -9,7 +9,7 @@ heading.classList.add("score-heading");
 description.classList.add("score-description");
 resetButton.classList.add("starting-page-btn");
 
-function a(correctAnswersCounter, difficulty, category) {
+function showMessage(correctAnswersCounter, difficulty, category) {
   const descriptionContent = {
     0: "It looks like this quiz was quite challenging. Don't be discouraged—every mistake is an opportunity to learn.",
     1: "You got one correct answer. Keep practicing, and you'll see improvement in no time.",
@@ -32,4 +32,4 @@ function a(correctAnswersCounter, difficulty, category) {
     window.location.href = "index.html";
   };
 }
-export { a };
+export { showMessage };

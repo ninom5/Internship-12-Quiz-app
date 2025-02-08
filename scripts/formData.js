@@ -10,33 +10,32 @@ let questions;
 let players = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  for(let i = 0; i < localStorage.length; i++) {
+  for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     const value = localStorage.getItem(key);
 
-    //ovo popravit cathc bude greska ?? a radi ??
-  try {
-    const parsedValue = JSON.parse(value);
-    if (parsedValue && parsedValue.numberOfCorrectAnswers !== undefined) {
-      players.push({ playerName: key, ...parsedValue });
+    try {
+      const parsedValue = JSON.parse(value);
+      if (parsedValue && parsedValue.numberOfCorrectAnswers !== undefined) {
+        players.push({ playerName: key, ...parsedValue });
+      }
+    } catch (error) {
+      console.log(`Skipping invalid JSON for key ${key}`);
     }
-  } catch (error) {
-    console.log(`Skipping invalid JSON for key ${key}`);
   }
-}
 
   players.forEach((player) => {
     const scoreItem = document.createElement("li");
     const score = document.createElement("p");
 
-    //popravit za anycategory
-    score.innerHTML = `<i>Player name:</i> ${player.playerName},&nbsp; <i>number of correct answers: </i> ${player.numberOfCorrectAnswers} / 5,&nbsp; <i>difficulty: </i>${player.difficulty},&nbsp; <i>category: </i>${player.category}`;
-    
+    score.innerHTML = `<i>Player name:</i> ${player.playerName},&nbsp; <i>number of correct answers: 
+    </i> ${player.numberOfCorrectAnswers} / 5,&nbsp; <i>difficulty: </i>${player.difficulty},&nbsp; <i>category: 
+    </i>${player.category},&nbsp; <i>date: </i>${player.date},&nbsp; <i>time: </i>${player.time}`;
+
     scoreItem.appendChild(score);
     listOfScores.appendChild(scoreItem);
   });
-  if(players.length === 0) {
+  if (players.length === 0) {
     const listItem = document.createElement("li");
     listItem.innerHTML = "No previous scores";
     listItem.classList.add("no-previous-scores");
